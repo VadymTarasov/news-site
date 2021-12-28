@@ -24,3 +24,10 @@ Auth::routes();
 Route::group(['namespace' => 'Main'],function (){
     Route::get('/','IndexController');
 });
+//для админки
+
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::group(['namespace' => 'Main'], function () {
+        Route::get('/', 'IndexController');
+    });
+});
