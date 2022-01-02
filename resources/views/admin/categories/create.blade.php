@@ -32,6 +32,9 @@
                         <div class="form-group">
                             <label>название</label>
                             <input type="text" class="form-control" name="title" placeholder="Название категории">
+                            @error('title')
+                            <div class="text-danger">Это поле необходимо для заполнения</div>
+                            @enderror
                         </div>
                         <input type="submit" class="btn btn-primary" value="Добавить">
                     </form>
