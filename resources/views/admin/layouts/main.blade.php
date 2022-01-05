@@ -67,6 +67,8 @@
 <!-- jQuery UI 1.11.4 -->
 
 <script src="{{asset('plugins/summernote/summernote-bs4.min.js')}}"></script>
+
+<script src="{{asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js')}}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button)
@@ -91,6 +93,10 @@
                 ['height', ['height']]
             ]
         });
+    });
+
+    $(function () {
+        bsCustomFileInput.init();
     });
 </script>
 </body>
