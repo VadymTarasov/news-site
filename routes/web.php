@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });*/
 
-Auth::routes();
+Auth::routes(['verify'=>true]);
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
@@ -27,7 +27,7 @@ Route::group(['namespace' => 'Main'],function ()
 });
 //для админки
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin','middleware'=>['auth','admin']], function ()
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin','middleware'=>['auth','admin','verified']], function ()
 {
     Route::group(['namespace' => 'Main'], function ()
     {
