@@ -19,14 +19,29 @@ Route::get('/', function () {
 
 Auth::routes(['verify'=>true]);
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['namespace' => 'Main'],function ()
 {
     Route::get('/','IndexController');
 });
-//для админки
 
+//личный кабинет
+Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware'=>['auth','verified']], function ()
+{
+    Route::group(['namespace' => 'Main'], function ()
+    {
+        Route::get('/', 'IndexController')->name('personal.main.index');
+    });
+    Route::group(['namespace' => 'Liked', 'prefix'=>'liked'], function ()
+    {
+        Route::get('/', 'IndexController')->name('personal.liked.index');
+    });
+    Route::group(['namespace' => 'Comment','prefix'=>'comments'], function ()
+    {
+        Route::get('/', 'IndexController')->name('personal.comment.index');
+    });
+});
+//для админки
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin','middleware'=>['auth','admin','verified']], function ()
 {
     Route::group(['namespace' => 'Main'], function ()
