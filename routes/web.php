@@ -22,7 +22,7 @@ Auth::routes(['verify'=>true]);
 
 Route::group(['namespace' => 'Main'],function ()
 {
-    Route::get('/','IndexController');
+    Route::get('/','IndexController')->name('main.index');
 });
 
 //личный кабинет
