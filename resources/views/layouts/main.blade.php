@@ -24,7 +24,14 @@
             <div class="collapse navbar-collapse" id="edicaMainNav">
                 <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('main.index')}}">БЛОГ</a>
+                        <a class="nav-link" href="{{route('main.index')}}">Блог</a>
+                    </li> <li class="nav-item">
+                        @auth()
+                        <a class="nav-link" href="{{route('personal.main.index')}}">Личный кабинет</a>
+                        @endauth
+                        @guest()
+                        <a class="nav-link" href="{{route('personal.main.index')}}">Войти</a>
+                            @endguest
                     </li>
                 </ul>
             </div>

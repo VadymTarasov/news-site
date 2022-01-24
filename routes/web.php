@@ -29,6 +29,12 @@ Route::group(['namespace' => 'Post', 'prefix' => 'posts'],function ()
 {
     Route::get('/','IndexController')->name('post.index');
     Route::get('/{post}','ShowController')->name('post.show');
+//    комментарии
+    Route::group(['namespace' => 'Comment', 'prefix' => '{post}/comments'],function ()
+    {
+        Route::post('/','StoreController')->name('post.comment.store');
+
+    });
 });
 
 //личный кабинет
