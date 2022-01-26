@@ -41,6 +41,17 @@ Route::group(['namespace' => 'Post', 'prefix' => 'posts'],function ()
     });
 
 });
+//категории
+Route::group(['namespace' => 'Category', 'prefix'=>'categories'],function ()
+{
+    Route::get('/','IndexController')->name('category.index');
+
+    Route::group(['namespace' => 'Post', 'prefix'=>'{category}/posts'], function ()
+    {
+        Route::get('/', 'IndexController')->name('category.post.index');
+    });
+});
+
 
 //личный кабинет
 Route::group(['namespace' => 'Personal', 'prefix' => 'personal', 'middleware'=>['auth','verified']], function ()

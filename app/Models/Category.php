@@ -12,8 +12,9 @@ class Category extends Model
     use SoftDeletes;
     protected $table = 'categories';
     protected $guarded = false;
-/*стали добавляться категории после того как закомментировал*/
-  /*  public static function firstOrCreate(array $data)
+    public function posts()
     {
-    }*/
+        return $this->hasMany(Post::class,'category_id','id');
+    }
+
 }
